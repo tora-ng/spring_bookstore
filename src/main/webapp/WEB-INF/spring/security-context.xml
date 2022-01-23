@@ -6,10 +6,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<http>
-		<intercept-url pattern="/security/all" access="permitAll"/>
-		<intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" />
-		<intercept-url pattern="/security/admin" access="hasRole('ROLE_ADMIN')" />
+     <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/login/loginForm" access="permitAll" />
+        <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/security/member" access="hasRole('USER')" /> 
+        <intercept-url pattern="/security/admin" access="hasRole('ADMIN')" />
 		
 		<!-- 로그인 커스텀화 페이지 -->
          <form-login login-page="/login/loginForm"
@@ -18,19 +19,24 @@
               username-parameter="userid"
               password-parameter="userpassword" />
 		
+		<logout logout-url="/logout" logout-success-url="/" /> 
+		
 		<!-- 403 에러 처리, 403 에러가 나면 /security/accessError로 치고 들어가.-->
       	<access-denied-handler error-page="/security/accessError"/>
 	<form-login/>
 </http>
 
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
-				<user name="admin" password="{noop}admin" authorities="ROLE_ADMIN, ROLE_ADMIN"/>
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
+	<beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <beans:property name="dataSource" ref="dataSource"/>
+    </beans:bean>
+   
+    <beans:bean id="customNoOpPasswordEncoder" class="edu.kosmo.ysy.security.CustomNoOpPasswordEncoder"/> 
+    <beans:bean id="customUserDetailsService" class="edu.kosmo.ysy.security.CustomUserDetailsService"/>  
 
+    <authentication-manager>
+        <authentication-provider user-service-ref="customUserDetailsService">
+        <password-encoder ref="customNoOpPasswordEncoder"/> 
+        </authentication-provider>
+    </authentication-manager> 
 
 </beans:beans>
