@@ -11,7 +11,7 @@ public class CustomNoOpPasswordEncoder implements PasswordEncoder {
 
       log.warn("before encode :" + rawPassword);
 
-      return rawPassword.toString();
+      return rawPassword.toString(); // 암호화 없이 비밀번호 저장
    }
 
    public boolean matches(CharSequence rawPassword, String encodedPassword) {
