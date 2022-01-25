@@ -3,6 +3,7 @@ package edu.kosmo.ysy.vo;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -36,6 +37,8 @@ public class MemberVO {
 	private String userphone;
 	private Timestamp userdate;
 	private int mileage;
+	
+	private List<AuthVO> authList;
 	
 	
 	
