@@ -23,7 +23,7 @@ public class MemberService {
 		String user_id=auth.getName();
 		log.info("유저 아이디: " + user_id);
 		
-		MemberVO memberVO = memberMapper.readUser(userid);
+		MemberVO memberVO = memberMapper.readMember(userid);
 		
 		memberVO.setAuthList(memberMapper.readAuthority(userid));
 		return memberVO;

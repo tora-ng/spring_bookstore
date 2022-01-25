@@ -16,8 +16,9 @@ import lombok.extern.log4j.Log4j;
 @Service
 public class UserService {
 
-//	@Inject
-//	private BCryptPasswordEncoder passEncoder;
+	// 암호화 모듈
+	@Inject
+	private BCryptPasswordEncoder passEncoder;
 
 	@Inject
 	private UserMapper userMapper;
@@ -25,9 +26,9 @@ public class UserService {
 	@Transactional(rollbackFor = Exception.class)
 	public void addUser(UserVO userVO) {
 		String password = userVO.getUserpassword();
-//		String encode = passEncoder.encode(password);
+		String encode = passEncoder.encode(password);
 
-//		userVO.setUserpassword(encode);
+		userVO.setUserpassword(encode);
 
 		userMapper.insertUser(userVO);
 		userMapper.insertAuthorities(userVO);

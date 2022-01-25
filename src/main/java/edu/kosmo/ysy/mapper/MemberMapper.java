@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-
 import edu.kosmo.ysy.vo.AuthVO;
 import edu.kosmo.ysy.vo.MemberVO;
-import edu.kosmo.ysy.vo.UserVO;
 
 public interface MemberMapper {
-	@Select("SELECT * FROM MEMBER WHERE USERID = #{USERID}")
-	public MemberVO readUser(String userid);
+	@Select("SELECT * FROM member, authority where member.userid = authority.userid and member.userid = #{USERID}")
+	public MemberVO readMember(String userid);
 	
-	@Select("select * from authority where userid =  #{USERID}")	
+	@Select("SELECT authority, userid FROM member, authority where member.userid = authority.userid and member.userid = #{USERID}")	
 	public List<AuthVO> readAuthority(String userid);
+	
+	
 }

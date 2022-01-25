@@ -36,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService  {
       
       log.warn("Load User ID: " + userid);   
       
-      MemberVO vo = memberMapper.readUser(userid);
+      MemberVO vo = memberMapper.readMember(userid);
       vo.setAuthList(memberMapper.readAuthority(userid)); 
       
       log.info("==========debug==========" + vo);
