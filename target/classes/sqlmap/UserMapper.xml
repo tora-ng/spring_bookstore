@@ -3,10 +3,10 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.kosmo.ysy.mapper.MemberMapper">
+<mapper namespace="edu.kosmo.ysy.mapper.UserMapper">
 
-	<resultMap id="MemberMap" type="edu.kosmo.ysy.vo.MemberVO">
-		<result column="userid" property="userid" />
+	<resultMap id="userMap" type="edu.kosmo.ysy.vo.UserVO">
+		<id column="userid" property="userid" />
 		<result column="username" property="username" />
 		<result column="userpassword" property="userpassword" />
 		<result column="gender" property="gender" />
@@ -24,9 +24,8 @@
 		<result property="authority" column="authority" />
 	</resultMap>
 
-	<select id="getUser" resultMap="MemberMap">
-		select * from member, authority
-		where member.userid = authority.userid and member.userid = #{userid}
+	<select id="getUser" resultMap="userMap">
+		select * from member, authority where member.userid = authority.userid and member.userid = #{userid}
 	</select>
 
 
