@@ -12,19 +12,15 @@
 <body>
 
 <h1>유저 페이지 입니다.</h1>
-<p>principal: <sec:authentication property="principal"/></p>
+<p>사용자아이디: <sec:authentication property="principal.userVO.userid"/></p>
+<p>이름: <sec:authentication property="principal.userVO.username"/></p>
+<p>성별: <sec:authentication property="principal.userVO.gender"/></p>
+<p>이메일: <sec:authentication property="principal.userVO.email"/></p>
+<p>주소: <sec:authentication property="principal.userVO.useradress"/></p>
+<p>전화번호: <sec:authentication property="principal.userVO.userphone"/></p>
+<p>보유 적립금: <sec:authentication property="principal.userVO.mileage"/></p>
 
-<p>사용자아이디: <sec:authentication property="principal.member.userid"/></p>
-<p>사용자이름: <sec:authentication property="principal.member.username"/></p>
-<p>사용자가입일자: <sec:authentication property="principal.member.userdate"/></p>
-<p><a href="<c:url value="/" />">홈</a></p>
 
-<!-- 
-<p>사용자아이디: <sec:authentication property="principal.member.userid"/></p>
-<p>사용자이름: <sec:authentication property="principal.member.username"/></p>
-<p>사용자가입일자: <sec:authentication property="principal.member.userdate"/></p>
-<p><a href="<c:url value="/" />">홈</a></p>
- -->
  
 </body>
 </html>
