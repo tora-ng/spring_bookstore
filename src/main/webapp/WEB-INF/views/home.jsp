@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-   <title>메이페이지</title>
+   <title>메인페이지</title>
 </head>
 
 <body>
@@ -28,6 +28,7 @@
     [<a href="<c:url value="/add/addForm" />">회원가입</a>]
     [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
+    [<a href="<c:url value="boardNotice/list"/>">공지사항</a>]
 </h3>
 </body>
 </html>

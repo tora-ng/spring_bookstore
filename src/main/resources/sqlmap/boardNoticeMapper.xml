@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.kosmo.ysy.mapper.BoardNoticeMapper">
+   
+   <select id="getList" resultType="edu.kosmo.ysy.vo.BoardNoticeVO">
+   <![CDATA[
+   SELECT BID, BTITLE, BDATE, BHIT, MEMBER.USERID, BCONTENT, BINDENT, BSTEP, BGROUP FROM BOARD,MEMBER WHERE BOARD.USERID = MEMBER.USERID ORDER BY BGROUP, BSTEP ASC
+   ]]>
+   </select>
+   
+   <select id="read" resultType="edu.kosmo.ysy.vo.BoardNoticeVO">
+   <![CDATA[
+   SELECT BID, BTITLE, BDATE, BHIT, MEMBER.USERID, BCONTENT, BINDENT, BSTEP, BGROUP FROM BOARD,MEMBER
+    WHERE BOARD.USERID = MEMBER.USERID and bid = #{bid} ORDER BY BGROUP, BSTEP ASC
+   ]]>
+   </select>
+   
+   <select id="insert">
+   <![CDATA[
+	insert into board (bid, btitle, userid, bcontent, bgroup, bindent, bstep) values(board_seq.nextval, #{btitle}, 'admin', #{bcontent}, board_seq.currval, 0, 0)
+   ]]>
+   </select>
+   
+   <select id="delete" resultType="edu.kosmo.ysy.vo.BoardNoticeVO">
+   <![CDATA[
+	DELETE FROM BOARD WHERE BID = #{bid}
+   ]]>
+   </select>
+   
+   <select id="update" resultType="edu.kosmo.ysy.vo.BoardNoticeVO">
+   <![CDATA[
+	UPDATE BOARD SET BTITLE=#{btitle}, BCONTENT=#{bcontent} WHERE BID = #{bid}
+   ]]>
+   </select>   
+   
+</mapper>
