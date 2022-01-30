@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-   
    <table width="500" cellpadding="0" cellspacing="0" border="1">
       <tr>
          <td>번호</td>
@@ -17,15 +16,15 @@
          <td>히트</td>
       </tr>
       
-      <c:forEach items="${noticeList}" var="noticeList">
+      <c:forEach items="${getList}" var="getList">
       <tr>
-         <td>${noticeList.bid}</td>
-         <td>${noticeList.userid}</td>
+         <td>${getList.bid}</td>
+         <td>${getList.userid}</td>
          <td>
-            <c:forEach begin="1" end="${noticeList.bindent}">-</c:forEach>
-            <a href="content_view?bid=${noticeList.bid}">${noticeList.btitle}</a></td>
-         <td>${noticeList.bdate}</td>
-         <td>${noticeList.bhit}</td>
+            <c:forEach begin="1" end="${getList.bindent}">-</c:forEach>
+            <a href="content_view?bid=${getList.bid}">${getList.btitle}</a></td>
+         <td>${getList.bdate}</td>
+         <td>${getList.bhit}</td>
       </tr>
       </c:forEach>
       <tr>

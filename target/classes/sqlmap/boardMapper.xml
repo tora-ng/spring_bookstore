@@ -13,6 +13,14 @@
    ]]>
    </select>
    
+   <select id="getListAll" resultType="edu.kosmo.ysy.vo.BoardVO">
+   <![CDATA[
+		SELECT BID, BTITLE, BDATE, BHIT, BOARD.USERID, BCONTENT,BINDENT, BSTEP, BGROUP,BOARDTYPE from BOARD
+		INNER JOIN MEMBER ON BOARD.USERID = MEMBER.USERID
+		ORDER BY BGROUP, BSTEP ASC
+   ]]>
+   </select>   
+   
    <select id="read" resultType="edu.kosmo.ysy.vo.BoardVO">
    <![CDATA[
    SELECT BID, BTITLE, BDATE, BHIT, MEMBER.USERID, BCONTENT, BINDENT, BSTEP, BGROUP FROM BOARD,MEMBER
@@ -22,7 +30,7 @@
    
    <select id="insert">
    <![CDATA[
-	insert into board (bid, btitle, userid, bcontent, bgroup, bindent, bstep) values(board_seq.nextval, #{btitle}, 'admin', #{bcontent}, board_seq.currval, 0, 0)
+	insert into board (bid, btitle, userid, bcontent, bgroup, bindent, bstep, boardtype) values(board_seq.nextval, #{btitle}, 'admin', #{bcontent}, board_seq.currval, 0, 0, #{boardtype})
    ]]>
    </select>
    

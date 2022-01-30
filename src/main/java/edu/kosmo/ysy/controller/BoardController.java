@@ -20,63 +20,73 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-@RequestMapping("/boardNotice/*")
+@RequestMapping("/board/*")
 public class BoardController {
 	
 	@Autowired
-	private BoardService boardNoticeService;
+	private BoardService boardService;
 	
-	@RequestMapping("/boardNotice/list")
-	public String noticeList(BoardVO boardNoticeVO, Model model) {
-		log.info("noticeList()...");
-		int boardtype = boardNoticeVO.getBoardtype();
-		model.addAttribute("noticeList", boardNoticeService.getList(boardtype));
-		return "/boardNotice/list";
+	@RequestMapping("/board/list")
+	public String list(BoardVO boardVO, Model model) {
+		log.info("list()...");
+		int boardtype = boardVO.getBoardtype();
+		model.addAttribute("getList", boardService.getList(boardVO));
+		return "/board/list";
 	}
 	
-	@RequestMapping("/boardNotice/content_view")
-	public String content_view(BoardVO boardNoticeVO, Model model) {
+	@RequestMapping("/board/listAll")
+	public String listAll(Model model) {
+		log.info("listAll()...");
+		model.addAttribute("getListAll", boardService.getListAll());
+		return "/board/listAll";
+	}
+	
+	
+	@RequestMapping("/board/content_view")
+	public String content_view(BoardVO boardVO, Model model) {
 		log.info("content_view()...");
-		int bid = boardNoticeVO.getBid();
+		int bid = boardVO.getBid();
 		log.info("* bid:" + bid);
-		model.addAttribute("content_view", boardNoticeService.get(bid));
-		return "/boardNotice/content_view";
+		model.addAttribute("content_view", boardService.get(bid));
+		return "/board/content_view";
 	}
 	
-	@RequestMapping("/boardNotice/content_view2")
-	public String content_view2(BoardVO boardNoticeVO, Model model) {
+	@RequestMapping("/board/content_view2")
+	public String content_view2(BoardVO boardVO, Model model) {
 		log.info("content_view2()...");
-		int bid = boardNoticeVO.getBid();
-		model.addAttribute("content_view2", boardNoticeService.get(bid));
-		return "/boardNotice/content_view2";
+		int bid = boardVO.getBid();
+		model.addAttribute("content_view2", boardService.get(bid));
+		return "/board/content_view2";
 	}	
 	
-	@RequestMapping("/boardNotice/modify")
-	public String modify(BoardVO boardNoticeVO) {
+	@RequestMapping("/board/modify")
+	public String modify(BoardVO boardVO) {
 		log.info("modify()...");
-		log.info(boardNoticeVO);
-		boardNoticeService.modify(boardNoticeVO);
+		log.info(boardVO);
+		boardService.modify(boardVO);
 		
 		return "redirect:list";
 	}		
 
-	@RequestMapping("/boardNotice/write_view")
+	@RequestMapping("/board/write_view")
 	public String write_view() {
 		log.info("write_view()...");
-		return "/boardNotice/write_view";
+		return "/board/write_view";
 	}
 	
-	@RequestMapping("/boardNotice/write")
-	public String write(BoardVO boardNoticeVO) {
+	@RequestMapping("/board/write")
+	public String write(BoardVO boardVO) {
 		log.info("write()...");
-		boardNoticeService.register(boardNoticeVO);
-		return "redirect:list";
+		boardService.register(boardVO);
+		int boardtype = boardVO.getBoardtype();
+		return "redirect:listAll";
 	}
 	
-	@RequestMapping("/boardNotice/delete")
-	public String delete(BoardVO boardNoticeVO) {
+
+	@RequestMapping("/board/delete")
+	public String delete(BoardVO boardVO) {
 		log.info("delete()...");
-		boardNoticeService.remove(boardNoticeVO);
+		boardService.remove(boardVO);
 		return "redirect:list";
 	}
 

@@ -10,6 +10,11 @@
 <table width="500" cellpadding="0" cellspacing="0" border="1">
       <form action="write" method="get">
          <tr>
+            <td> 게시판 종류 </td>
+            <td> <input type="text" name="boardtype" size = "50"></td>
+         </tr>
+
+         <tr>
             <td> 이름 </td>
             <td> <input type="text" name="admin" size = "50" value="admin" enabled></td>
          </tr>

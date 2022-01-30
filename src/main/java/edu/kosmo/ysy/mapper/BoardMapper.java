@@ -12,7 +12,9 @@ import edu.kosmo.ysy.vo.MemberVO;
 
 @Mapper
 public interface BoardMapper {
-	List<BoardVO> getList(int boardtype);
+	List<BoardVO> getList(BoardVO board);
+	
+	List<BoardVO> getListAll();
 	
 	BoardVO read(int bid);
 	

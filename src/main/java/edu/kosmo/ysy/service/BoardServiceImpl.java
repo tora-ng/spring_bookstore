@@ -22,11 +22,17 @@ public class BoardServiceImpl implements BoardService{
 	private BoardMapper boardMapper;
 	
 	@Override
-	public List<BoardVO> getList(int boardtype){
+	public List<BoardVO> getList(BoardVO board){
 		log.info("Board getList()...");
-		return boardMapper.getList(boardtype);
+		return boardMapper.getList(board);
 	}
 
+	@Override
+	public List<BoardVO> getListAll() {
+		log.info("Board getListAll()...");
+		return boardMapper.getListAll();
+	}
+	
 	@Override
 	public BoardVO get(int bid) {
 		log.info("Board get()...");
@@ -54,6 +60,8 @@ public class BoardServiceImpl implements BoardService{
 		boardMapper.update(board);
 		
 	}
+
+
 	
 
 }

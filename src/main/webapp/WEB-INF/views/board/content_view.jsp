@@ -36,7 +36,7 @@
          <tr >
             <td colspan="2">
 			<a href="content_view2.do?bid=${content_view.bid}">수정&nbsp;&nbsp;</a>
-			<a href="list">목록보기</a> &nbsp;&nbsp;
+			<a href="listAll">목록보기</a> &nbsp;&nbsp;
 			<a href="delete?bid=${content_view.bid}">삭제</a> &nbsp;&nbsp;
 			<a href="reply_view?bid=${content_view.bid}">답변</a></td>
          </tr>
