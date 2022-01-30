@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.kosmo.ysy.service.BoardNoticeService;
-import edu.kosmo.ysy.vo.BoardNoticeVO;
+import edu.kosmo.ysy.service.BoardService;
+import edu.kosmo.ysy.vo.BoardVO;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -24,10 +24,10 @@ import lombok.extern.log4j.Log4j;
 public class BoardController {
 	
 	@Autowired
-	private BoardNoticeService boardNoticeService;
+	private BoardService boardNoticeService;
 	
 	@RequestMapping("/boardNotice/list")
-	public String noticeList(BoardNoticeVO boardNoticeVO, Model model) {
+	public String noticeList(BoardVO boardNoticeVO, Model model) {
 		log.info("noticeList()...");
 		int boardtype = boardNoticeVO.getBoardtype();
 		model.addAttribute("noticeList", boardNoticeService.getList(boardtype));
@@ -35,7 +35,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardNotice/content_view")
-	public String content_view(BoardNoticeVO boardNoticeVO, Model model) {
+	public String content_view(BoardVO boardNoticeVO, Model model) {
 		log.info("content_view()...");
 		int bid = boardNoticeVO.getBid();
 		log.info("* bid:" + bid);
@@ -44,7 +44,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardNotice/content_view2")
-	public String content_view2(BoardNoticeVO boardNoticeVO, Model model) {
+	public String content_view2(BoardVO boardNoticeVO, Model model) {
 		log.info("content_view2()...");
 		int bid = boardNoticeVO.getBid();
 		model.addAttribute("content_view2", boardNoticeService.get(bid));
@@ -52,7 +52,7 @@ public class BoardController {
 	}	
 	
 	@RequestMapping("/boardNotice/modify")
-	public String modify(BoardNoticeVO boardNoticeVO) {
+	public String modify(BoardVO boardNoticeVO) {
 		log.info("modify()...");
 		log.info(boardNoticeVO);
 		boardNoticeService.modify(boardNoticeVO);
@@ -67,14 +67,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardNotice/write")
-	public String write(BoardNoticeVO boardNoticeVO) {
+	public String write(BoardVO boardNoticeVO) {
 		log.info("write()...");
 		boardNoticeService.register(boardNoticeVO);
 		return "redirect:list";
 	}
 	
 	@RequestMapping("/boardNotice/delete")
-	public String delete(BoardNoticeVO boardNoticeVO) {
+	public String delete(BoardVO boardNoticeVO) {
 		log.info("delete()...");
 		boardNoticeService.remove(boardNoticeVO);
 		return "redirect:list";

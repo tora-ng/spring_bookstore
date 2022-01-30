@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class BoardNoticeVO {
+public class BoardVO {
 	private int bid;
 	private String btitle;
 	private Timestamp bdate;
