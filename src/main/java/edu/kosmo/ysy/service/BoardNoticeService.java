@@ -8,7 +8,7 @@ import lombok.extern.log4j.Log4j;
 
 public interface BoardNoticeService {
 	
-	public List<BoardNoticeVO> getList();
+	public List<BoardNoticeVO> getList(int boardtype);
 	
 	public BoardNoticeVO get(int bid);
 	

@@ -28,7 +28,7 @@
     [<a href="<c:url value="/add/addForm" />">회원가입</a>]
     [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
-    [<a href="<c:url value="boardNotice/list"/>">공지사항</a>]
+    [<a href="<c:url value="boardNotice/list?boardtype=${1 }"/>">공지사항</a>]
 </h3>
 </body>
 </html>

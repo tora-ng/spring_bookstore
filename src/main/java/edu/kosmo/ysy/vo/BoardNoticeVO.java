@@ -23,6 +23,7 @@ public class BoardNoticeVO {
 	private int bgroup;
 	private int bindent;
 	private int bstep;
+	private int boardtype;
 }
 
 //이름       널?       유형             
@@ -35,4 +36,5 @@ public class BoardNoticeVO {
 //BCONTENT          VARCHAR2(1000) 
 //BGROUP            NUMBER         
 //BINDENT           NUMBER         
-//BSTEP             NUMBER   
+//BSTEP             NUMBER         
+//BOARDTYPE          NUMBER      

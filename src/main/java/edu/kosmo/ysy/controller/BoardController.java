@@ -27,9 +27,10 @@ public class BoardController {
 	private BoardNoticeService boardNoticeService;
 	
 	@RequestMapping("/boardNotice/list")
-	public String noticeList(Model model) {
+	public String noticeList(BoardNoticeVO boardNoticeVO, Model model) {
 		log.info("noticeList()...");
-		model.addAttribute("noticeList", boardNoticeService.getList());
+		int boardtype = boardNoticeVO.getBoardtype();
+		model.addAttribute("noticeList", boardNoticeService.getList(boardtype));
 		return "/boardNotice/list";
 	}
 	
